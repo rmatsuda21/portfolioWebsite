@@ -5,7 +5,7 @@ class Test extends Component {
     constructor(props){
         super(props);
         this.state = {
-            message: ''
+            courses: []
         }
     }
 
@@ -14,16 +14,18 @@ class Test extends Component {
     }
 
     fetchTest = () => {
-        fetch('/ping')
+        fetch('/grades')
         .then(res => res.json())
-        .then(res => this.setState({ message: res }))
+        .then(res => this.setState({ courses: res.courses }))
     }
 
     render() {
-        const { message } = this.state;
+        const { courses } = this.state;
         return (
         <div>
-            <h1>{message}</h1>
+            {courses.map(course => (
+                <h1>{course.prefix}-{course.course}-{course.section}</h1>
+            ))}
         </div>
         );
     }
