@@ -30,6 +30,15 @@ body::before {
           -ms-user-select: none; /* Internet Explorer/Edge */
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+    
+    white-space: pre;                      /* CSS2.0 browsers */
+    white-space: pre-wrap;                 /* CSS2.1 browsers */
+    white-space: pre-line;                 /* CSS3 and CSS2.1 */
+    white-space: -moz-pre-wrap !important; /* 1999+ Mozilla   */
+    white-space: -hp-pre-wrap;             /* for HP printers */
+    white-space: -o-pre-wrap;              /* Opera 7 and up  */
+    white-space: -pre-wrap;                /* Opera 4 thru 6  */
+    word-wrap: break-word;                 /* IE 5.5+ and up  */
 }
 
 h1, h2, h3, p {

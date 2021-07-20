@@ -77,7 +77,7 @@ export function Console() {
 
     return (
         <div style={{whiteSpace:'pre'}}>
-            ><span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
+            &gt;<span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
         </div>
     );
 }
