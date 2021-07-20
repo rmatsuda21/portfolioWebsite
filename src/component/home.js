@@ -31,14 +31,7 @@ class Home extends Component {
         <>
         <BrowserView>
         <div className="mainContent" id="mainContainer">
-            <p style={{whiteSpace:'pre', lineHeight:'99%'}}>
-            ██╗  ██╗ ██████╗ ██╗    ██╗██████╗ ██╗   ██╗<br/>
-            ██║  ██║██╔═══██╗██║    ██║██╔══██╗╚██╗ ██╔╝<br/>
-            ███████║██║   ██║██║ █╗ ██║██║  ██║ ╚████╔╝ <br/>
-            ██╔══██║██║   ██║██║███╗██║██║  ██║  ╚██╔╝  <br/>
-            ██║  ██║╚██████╔╝╚███╔███╔╝██████╔╝   ██║   <br/>
-            ╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ ╚═════╝    ╚═╝   <br/>
-            </p>
+            <h1>Howdy!</h1>
             <h3>This site is still WIP, please check back later</h3>
             <p>
                 ------------------------------<br/>
