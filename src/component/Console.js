@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export function Console() {
 
     // Call our hook for each key that we'd like to monitor
+    const [history, setHistory] = useState([]);
     const [text, setText] = useState("");
     const [pos, setPos] = useState(0);
 
@@ -63,6 +64,13 @@ export function Console() {
                 updateText(newText, newPos);
             }
         }
+        else if(key === 'Enter') {
+            setHistory(prevHistory => [...prevHistory, text]);
+            setText('');
+            setPos(0);
+
+            updateText('',0);
+        }
         else if(key.length === 1 && /[0-9a-zA-Z{ }]/.test(key)){
             addChar(key);
         }
@@ -75,8 +83,13 @@ export function Console() {
         };
     });
 
+    const lines = history.map((line) => {
+        return <><span>&gt;{line}</span><br/></>;
+    });
+
     return (
         <div style={{whiteSpace:'pre'}}>
+            {lines}
             &gt;<span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
         </div>
     );
