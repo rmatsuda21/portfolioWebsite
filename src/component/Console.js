@@ -1,15 +1,21 @@
 import { useState, useEffect } from "react";
-// Usage
+
 export function Console() {
+    const MAX_HIST = 100;
+    const MAX_DISP = 30;
 
     // Call our hook for each key that we'd like to monitor
     const [history, setHistory] = useState([]);
+    const [display, setDisplay] = useState([]);
     const [text, setText] = useState("");
     const [pos, setPos] = useState(0);
 
     const [sText, setSText] = useState("");
     const [cText, setCText] = useState(" ");
     const [nText, setNText] = useState("");
+
+    const [histIndex, setHistIndex] = useState(-1);
+    const [origText, setOrigText] = useState('');
 
     function updateText(text, pos){
         var s, c, n;
@@ -40,8 +46,13 @@ export function Console() {
         updateText(newText, newPos);
     }
 
+    function getHistory(index) {
+        if(index === -1) return origText;
+
+        return String(history[history.length - 1 - index]);
+    }
+
     const downHandler = ({ key }) => {
-        console.log(key);
         if(key === 'ArrowLeft') {
             if(pos > 0) {
                 setPos(pos - 1);
@@ -54,6 +65,27 @@ export function Console() {
                 updateText(text, pos + 1);
             }
         }
+        else if(key === 'ArrowUp') {
+            if(histIndex >= MAX_HIST || histIndex >= history.length-1) return;
+            if(histIndex === -1) setOrigText(text);
+
+            setHistIndex(histIndex+1);
+            let hist = getHistory(histIndex+1);
+
+            setText(hist);
+            setPos(Math.min(pos, hist.length));
+            updateText(hist, Math.min(pos, hist.length));
+        }
+        else if(key === 'ArrowDown') {
+            if(histIndex === -1) return;
+
+            setHistIndex(histIndex-1);
+            let hist = getHistory(histIndex-1);
+            
+            setText(hist);
+            setPos(Math.min(pos, hist.length));
+            updateText(hist, Math.min(pos, hist.length));
+        }
         else if(key === 'Backspace') {
             if(pos > 0) {
                 var newText = text.slice(0,pos-1) + text.slice(pos);
@@ -65,13 +97,18 @@ export function Console() {
             }
         }
         else if(key === 'Enter') {
-            setHistory(prevHistory => [...prevHistory, text]);
+            if(history.length >= MAX_HIST)
+                setHistory(prevHistory => [...(prevHistory.slice(1)), '>'+text]);
+            else
+                setHistory(prevHistory => [...prevHistory, '>'+text]);
+            console.log(history);
+            
             setText('');
             setPos(0);
 
             updateText('',0);
         }
-        else if(key.length === 1 && /[0-9a-zA-Z{ }]/.test(key)){
+        else if(key.length === 1 && /[!@#$%^&*()-=_+[\]{}|\\~`'";:,.<>/?0-9a-zA-Z{ }]/.test(key)){
             addChar(key);
         }
     }
@@ -83,8 +120,8 @@ export function Console() {
         };
     });
 
-    const lines = history.map((line) => {
-        return <><span>&gt;{line}</span><br/></>;
+    const lines = history.slice(Math.max(0,history.length-MAX_DISP),history.length).map((line, index) => {
+        return <><span key={index}>{line}</span><br/></>;
     });
 
     return (
