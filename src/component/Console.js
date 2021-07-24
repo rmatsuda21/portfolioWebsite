@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import { parseCommand } from "../scripts/commands";
 
 export function Console() {
     const MAX_HIST = 100;
     const MAX_DISP = 30;
 
-    // Call our hook for each key that we'd like to monitor
     const [history, setHistory] = useState([]);
     const [display, setDisplay] = useState([]);
     const [text, setText] = useState("");
@@ -17,15 +17,15 @@ export function Console() {
     const [histIndex, setHistIndex] = useState(-1);
     const [origText, setOrigText] = useState('');
 
-    function updateText(text, pos){
+    function updateText(t, p){
         var s, c, n;
-        s = (text.slice(0,pos));
-        if(pos < text.length)
-            c = (text.slice(pos, pos+1));
+        s = (t.slice(0,p));
+        if(p < t.length)
+            c = (t.slice(p, p+1));
         else
             c = (' ');
-        if(pos < text.length - 1)
-            n = (text.slice(pos+1, text.length));
+        if(p < t.length - 1)
+            n = (t.slice(p+1, t.length));
         else
             n = ('');
 
@@ -98,15 +98,29 @@ export function Console() {
         }
         else if(key === 'Enter') {
             if(history.length >= MAX_HIST)
-                setHistory(prevHistory => [...(prevHistory.slice(1)), '>'+text]);
+                setHistory(prevHistory => [...(prevHistory.slice(1)), text]);
             else
-                setHistory(prevHistory => [...prevHistory, '>'+text]);
-            console.log(history);
-            
+                setHistory(prevHistory => [...prevHistory, text]);
+
+            const parsedCommand = parseCommand(text);
+
+            console.log(parsedCommand.length);
+            if(display.length + parsedCommand.length + 1 > MAX_DISP) {
+                const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
+                console.log(overflow);
+                setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
+            }
+
+            setDisplay(prevDisp => [...prevDisp, '>'+text]);
+            parsedCommand.forEach(t => {
+                setDisplay(prevDisp => [...prevDisp, t]);
+            });
+
             setText('');
             setPos(0);
 
             updateText('',0);
+            setHistIndex(-1);
         }
         else if(key.length === 1 && /[!@#$%^&*()-=_+[\]{}|\\~`'";:,.<>/?0-9a-zA-Z{ }]/.test(key)){
             addChar(key);
@@ -120,7 +134,7 @@ export function Console() {
         };
     });
 
-    const lines = history.slice(Math.max(0,history.length-MAX_DISP),history.length).map((line, index) => {
+    const lines = display.map((line, index) => {
         return <><span key={index}>{line}</span><br/></>;
     });
 
