@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-// Usage
-export function Console() {
+import { parseCommand } from "../scripts/commands";
 
-    // Call our hook for each key that we'd like to monitor
+export function Console() {
+    const MAX_HIST = 100;
+    const MAX_DISP = 30;
+
+    const [history, setHistory] = useState([]);
+    const [display, setDisplay] = useState([]);
     const [text, setText] = useState("");
     const [pos, setPos] = useState(0);
 
@@ -10,15 +14,18 @@ export function Console() {
     const [cText, setCText] = useState(" ");
     const [nText, setNText] = useState("");
 
-    function updateText(text, pos){
+    const [histIndex, setHistIndex] = useState(-1);
+    const [origText, setOrigText] = useState('');
+
+    function updateText(t, p){
         var s, c, n;
-        s = (text.slice(0,pos));
-        if(pos < text.length)
-            c = (text.slice(pos, pos+1));
+        s = (t.slice(0,p));
+        if(p < t.length)
+            c = (t.slice(p, p+1));
         else
             c = (' ');
-        if(pos < text.length - 1)
-            n = (text.slice(pos+1, text.length));
+        if(p < t.length - 1)
+            n = (t.slice(p+1, t.length));
         else
             n = ('');
 
@@ -39,8 +46,13 @@ export function Console() {
         updateText(newText, newPos);
     }
 
+    function getHistory(index) {
+        if(index === -1) return origText;
+
+        return String(history[history.length - 1 - index]);
+    }
+
     const downHandler = ({ key }) => {
-        console.log(key);
         if(key === 'ArrowLeft') {
             if(pos > 0) {
                 setPos(pos - 1);
@@ -53,6 +65,27 @@ export function Console() {
                 updateText(text, pos + 1);
             }
         }
+        else if(key === 'ArrowUp') {
+            if(histIndex >= MAX_HIST || histIndex >= history.length-1) return;
+            if(histIndex === -1) setOrigText(text);
+
+            setHistIndex(histIndex+1);
+            let hist = getHistory(histIndex+1);
+
+            setText(hist);
+            setPos(Math.min(pos, hist.length));
+            updateText(hist, Math.min(pos, hist.length));
+        }
+        else if(key === 'ArrowDown') {
+            if(histIndex === -1) return;
+
+            setHistIndex(histIndex-1);
+            let hist = getHistory(histIndex-1);
+            
+            setText(hist);
+            setPos(Math.min(pos, hist.length));
+            updateText(hist, Math.min(pos, hist.length));
+        }
         else if(key === 'Backspace') {
             if(pos > 0) {
                 var newText = text.slice(0,pos-1) + text.slice(pos);
@@ -63,7 +96,33 @@ export function Console() {
                 updateText(newText, newPos);
             }
         }
-        else if(key.length === 1 && /[0-9a-zA-Z{ }]/.test(key)){
+        else if(key === 'Enter') {
+            if(history.length >= MAX_HIST)
+                setHistory(prevHistory => [...(prevHistory.slice(1)), text]);
+            else
+                setHistory(prevHistory => [...prevHistory, text]);
+
+            const parsedCommand = parseCommand(text);
+
+            console.log(parsedCommand.length);
+            if(display.length + parsedCommand.length + 1 > MAX_DISP) {
+                const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
+                console.log(overflow);
+                setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
+            }
+
+            setDisplay(prevDisp => [...prevDisp, '>'+text]);
+            parsedCommand.forEach(t => {
+                setDisplay(prevDisp => [...prevDisp, t]);
+            });
+
+            setText('');
+            setPos(0);
+
+            updateText('',0);
+            setHistIndex(-1);
+        }
+        else if(key.length === 1 && /[!@#$%^&*()-=_+[\]{}|\\~`'";:,.<>/?0-9a-zA-Z{ }]/.test(key)){
             addChar(key);
         }
     }
@@ -75,8 +134,13 @@ export function Console() {
         };
     });
 
+    const lines = display.map((line, index) => {
+        return <><span key={index}>{line}</span><br/></>;
+    });
+
     return (
         <div style={{whiteSpace:'pre'}}>
+            {lines}
             &gt;<span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
         </div>
     );

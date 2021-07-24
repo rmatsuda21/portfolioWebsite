@@ -13,14 +13,13 @@ class Home extends Component {
     render() {
         return (
         <>
-        <BrowserView>
+        <BrowserView key={1}>
         <div className="mainContent" id="mainContainer">
-            <h1>Howdy!</h1>
+            <h1 style={{textAlign:'center'}}>Howdy!</h1>
             <h3>This site is still WIP, please check back later</h3>
             <p>
-                ------------------------------<br/>
-                ______________________________<br/><br/><br/>
-                ¯\_(^^)_/¯<br/>
+                -----------------------------------------------<br/>
+                ¯\_(^^)_/¯<br/><br/>
             </p>
             <Console/>
         </div>
