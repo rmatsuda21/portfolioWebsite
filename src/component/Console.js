@@ -102,17 +102,20 @@ export function Console() {
             else
                 setHistory(prevHistory => [...prevHistory, text]);
 
-            const parsedCommand = parseCommand(text);
+            var parsedCommand;
+            if(text.trim() != '') {
+                parsedCommand = parseCommand(text);
 
-            console.log(parsedCommand.length);
-            if(display.length + parsedCommand.length + 1 > MAX_DISP) {
-                const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
-                console.log(overflow);
-                setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
+                console.log(parsedCommand.length);
+                if(display.length + parsedCommand.length + 1 > MAX_DISP) {
+                    const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
+                    console.log(overflow);
+                    setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
+                }
             }
 
             setDisplay(prevDisp => [...prevDisp, '>'+text]);
-            parsedCommand.forEach(t => {
+            parsedCommand?.forEach(t => {
                 setDisplay(prevDisp => [...prevDisp, t]);
             });
 
@@ -139,7 +142,7 @@ export function Console() {
     });
 
     return (
-        <div style={{whiteSpace:'pre'}}>
+        <div style={{whiteSpace:'pre'}} className="console">
             {lines}
             &gt;<span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
         </div>

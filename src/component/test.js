@@ -13,9 +13,13 @@ class Test extends Component {
     }
 
     fetchTest = () => {
-        fetch('/grades')
+        // fetch('/grades')
+        // .then(res => res.json())
+        // .then(res => this.setState({ courses: res.courses }))
+        fetch('/ping')
         .then(res => res.json())
-        .then(res => this.setState({ courses: res.courses }))
+        .then(res => console.log(res))
+        .catch((err) => console.log(err));
     }
 
     render() {

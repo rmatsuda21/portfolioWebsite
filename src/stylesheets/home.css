@@ -41,6 +41,30 @@ body::before {
     word-wrap: break-word;                 /* IE 5.5+ and up  */
 }
 
+.console {
+    background-color: black;
+}
+
+.icon {
+    display: block;
+    position: absolute;
+
+    font-size: 15px;
+    text-align: center;
+
+    width: 150px;
+    bottom:10px;
+    left:10px;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.icon img {
+    width: 80%;
+}
+
 h1, h2, h3, p {
     text-align: left;
 }
