@@ -23,6 +23,9 @@ body::before {
 
 .mainContent {
     padding: 3rem;
+    width: 100vw;
+    height: 100vh;
+
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
        -khtml-user-select: none; /* Konqueror HTML */
@@ -63,6 +66,13 @@ body::before {
 
 .icon img {
     width: 80%;
+    margin: auto;
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 h1, h2, h3, p {

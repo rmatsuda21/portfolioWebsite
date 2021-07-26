@@ -29,9 +29,6 @@ export function Console() {
         else
             n = ('');
 
-        // console.log(pos);
-        // console.log('S:' + s + ' | C:' + c + ' | N:' + n);
-
         setSText(s);
         setCText(c);
         setNText(n);
@@ -102,16 +99,12 @@ export function Console() {
             else
                 setHistory(prevHistory => [...prevHistory, text]);
 
-            var parsedCommand;
-            if(text.trim() != '') {
-                parsedCommand = parseCommand(text);
+            const parsedCommand = parseCommand(text);
 
-                console.log(parsedCommand.length);
-                if(display.length + parsedCommand.length + 1 > MAX_DISP) {
-                    const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
-                    console.log(overflow);
-                    setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
-                }
+            if(display.length + parsedCommand.length + 1 > MAX_DISP) {
+                const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
+                console.log(overflow);
+                setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
             }
 
             setDisplay(prevDisp => [...prevDisp, '>'+text]);

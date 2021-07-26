@@ -4,10 +4,10 @@ const path = require('path');
 const app = express();
 const fetch = require("node-fetch");
 
-app.enable('trust proxy')
-app.use((req, res, next) => {
-    req.secure ? next() : res.redirect('https://' + req.headers.host + req.url)
-})
+// app.enable('trust proxy')
+// app.use((req, res, next) => {
+//     req.secure ? next() : res.redirect('https://' + req.headers.host + req.url)
+// })
 
 app.use(express.static(path.join(__dirname, 'build')));
 

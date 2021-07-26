@@ -26,7 +26,6 @@ const evalComm = (commands) => {
     } catch (err) {
         return ['Syntax Error!'];
     }
-    
 }
 
 const goto = (commands) => {
@@ -49,6 +48,10 @@ const commandDict = {
 }
 
 export function parseCommand(text) {
+    if(text.trim() === '') {
+        return [];
+    }
+
     var commands = String(text).split(' ');
     if(commands[0] in commandDict) {
         return commandDict[commands[0]](commands);
