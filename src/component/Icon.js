@@ -25,7 +25,7 @@ export class Icon extends Component{
                 onMouseMove={this.onMouseMove} 
                 onMouseDown={() => this.setState({mouseDown: true})} 
                 onMouseUp={() => this.setState({mouseDown: false})} 
-                style={{top:this.state.top, left:this.state.left, pointerEvents:'none'}}>
+                style={{top:this.state.top, left:this.state.left}}>
             <img src={icon} alt="Icon img"/>
             <a>{this.props.state.x}, {this.props.state.y}</a>
         </div>
