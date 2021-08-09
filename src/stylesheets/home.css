@@ -16,15 +16,13 @@ body::before {
     bottom: 0;
     right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
+    z-index: 100;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
 }
 
 .mainContent {
     padding: 3rem;
-    width: 100vw;
-    height: 100vh;
 
     -webkit-touch-callout: none; /* iOS Safari */
       -webkit-user-select: none; /* Safari */
@@ -55,24 +53,28 @@ body::before {
     font-size: 15px;
     text-align: center;
 
-    width: 150px;
-    bottom:10px;
-    left:10px;
+    width: 125px;
+    border: 1px solid transparent;
 }
 
 .icon:hover {
     cursor: pointer;
+    border: 1px dotted rgba(0, 0, 0, 0.25);
 }
 
 .icon img {
-    width: 80%;
+    width: 60%;
     margin: auto;
-    user-drag: none;
     -webkit-user-drag: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
+}
+
+.icon a {
+    width: 100%;
+    font-size: 1em;
 }
 
 h1, h2, h3, p {

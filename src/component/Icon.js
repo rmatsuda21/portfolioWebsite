@@ -1,33 +1,33 @@
 import { Component } from "react";
 import icon from '../icons/ie.png';
 
-export class Icon extends Component{
-    constructor(props) {
-        super(props);
-        // this.onDrag = this.onDrag.bind(this);
+export class Icon extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     // this.onDrag = this.onDrag.bind(this);
         
-        this.state = {
-            top: 100,
-            left: 0,
-            mouseDown: false
-        }
-    }
+    //     this.state = {
+    //         top: 300,
+    //         left: 250,
+    //         mouseX: 0,
+    //         mouseY: 0,
+    //         mouseDown: false
+    //     }
+    // }
 
-    onMouseMove = () => {
-        if(this.state.mouseDown) {
-            this.setState({top: this.props.state.y,left: this.props.state.x});
-        }
-    }
+    // componentDidMount() {
+    //     this.setState({top: this.props.top, left: this.props.left});
+    // }
 
     render() {
         return(
-        <div className="icon" onClick={this.props.onClick} 
-                onMouseMove={this.onMouseMove} 
-                onMouseDown={() => this.setState({mouseDown: true})} 
-                onMouseUp={() => this.setState({mouseDown: false})} 
-                style={{top:this.state.top, left:this.state.left, pointerEvents:'none'}}>
+        <div className="icon"
+                id={this.props.id}
+                onMouseDown={this.props.onMouseDown}
+                onMouseUp={this.props.onMouseUp}
+                style={{top:this.props.top, left:this.props.left}}>
             <img src={icon} alt="Icon img"/>
-            <a>{this.props.state.x}, {this.props.state.y}</a>
+            <a>Internet Explorer</a>
         </div>
         );
     }
