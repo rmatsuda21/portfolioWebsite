@@ -1,5 +1,6 @@
 import { Component } from "react";
 import icon from '../icons/ie.png';
+import resume from '../icons/resume.png';
 
 export class Icon extends Component {
     // constructor(props) {
@@ -20,14 +21,22 @@ export class Icon extends Component {
     // }
 
     render() {
+        var img;
+        switch(this.props.icon) {
+            case 'resume':
+                img = <img src={resume} alt="Icon img"/>;
+                break;
+            default:
+                img = <img src={icon} alt="Icon img"/>;
+        }
         return(
         <div className="icon"
                 id={this.props.id}
                 onMouseDown={this.props.onMouseDown}
                 onMouseUp={this.props.onMouseUp}
                 style={{top:this.props.top, left:this.props.left}}>
-            <img src={icon} alt="Icon img"/>
-            <a>Internet Explorer</a>
+            {img}
+            {this.props.text}
         </div>
         );
     }

@@ -22,6 +22,7 @@ const evalComm = (commands) => {
     if(!/[-+/*%=();0-9{ }]*/.test(restOfCommand))
         return ['Invalid Input!'];
     try {
+        // eslint-disable-next-line
         return [eval(restOfCommand)];
     } catch (err) {
         return ['Syntax Error!'];
