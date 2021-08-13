@@ -1,6 +1,7 @@
 import { Component } from "react";
 import icon from '../icons/ie.png';
 import resume from '../icons/resume.png';
+import console from '../icons/console.png';
 
 export class Icon extends Component {
     // constructor(props) {
@@ -25,6 +26,9 @@ export class Icon extends Component {
         switch(this.props.icon) {
             case 'resume':
                 img = <img src={resume} alt="Icon img"/>;
+                break;
+            case 'console':
+                img = <img src={console} alt="Icon img"/>;
                 break;
             default:
                 img = <img src={icon} alt="Icon img"/>;

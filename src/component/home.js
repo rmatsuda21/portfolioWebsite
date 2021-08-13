@@ -27,7 +27,7 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '2': {point: [50,350], type: 'icon', text:'Console', action: (()=>{
+                '2': {point: [50,350], type: 'icon', icon:'console', text:'Console', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -40,6 +40,7 @@ class Home extends Component {
                 })},
                 '3': {point: [100,100], 
                     type: 'window', 
+                    order: 0,
                     windowType: 'intro',
                     title: 'Hello :D'},
             },
