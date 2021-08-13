@@ -17,17 +17,42 @@ const help = (commands) => {
     return helpTextArr;
 }
 
+const evalComm = (commands) => {
+    var restOfCommand = commands.slice(1).join(' ');
+    if(!/[-+/*%=();0-9{ }]*/.test(restOfCommand))
+        return ['Invalid Input!'];
+    try {
+        // eslint-disable-next-line
+        return [eval(restOfCommand)];
+    } catch (err) {
+        return ['Syntax Error!'];
+    }
+}
+
+const goto = (commands) => {
+    window.location.href = commands[1];
+    return ['Empty'];
+}
+
 const helpText = {
     'help': 'Get list of all commands',
     'echo': 'I will talk back to you!',
+    'eval': 'Let me do your math :D',
+    'goto': 'Visit my other sites.',
 }
 
 const commandDict = {
     'help': help,
     'echo': echo,
+    'eval': evalComm,
+    'goto': goto,
 }
 
 export function parseCommand(text) {
+    if(text.trim() === '') {
+        return [];
+    }
+
     var commands = String(text).split(' ');
     if(commands[0] in commandDict) {
         return commandDict[commands[0]](commands);

@@ -16,20 +16,20 @@ body::before {
     bottom: 0;
     right: 0;
     background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-    z-index: 2;
+    z-index: 100;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
 }
 
 .mainContent {
     padding: 3rem;
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
     
     white-space: pre;                      /* CSS2.0 browsers */
     white-space: pre-wrap;                 /* CSS2.1 browsers */
@@ -41,6 +41,69 @@ body::before {
     word-wrap: break-word;                 /* IE 5.5+ and up  */
 }
 
-h1, h2, h3, p {
+.console {
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.console a {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.console pre {
+    display: inline-block;
+    white-space: pre-wrap;
+    margin: 0;
+
+    -webkit-touch-callout: unset;
+    -webkit-user-select: auto;
+     -khtml-user-select: auto;
+       -moz-user-select: auto;
+        -ms-user-select: auto;
+            user-select: auto;
+}
+
+.console pre::selection {
+    background: white;
+    color: black;
+}
+
+.icon {
+    display: block;
+    position: absolute;
+
+    font-size: 15px;
+    text-align: center;
+
+    width: 125px;
+    border: 1px solid transparent;
+}
+
+.icon:hover {
+    cursor: pointer;
+    border: 1px dotted rgba(0, 0, 0, 0.25);
+}
+
+.icon img {
+    width: 60%;
+    margin: auto;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.icon a {
+    width: 100%;
+    font-size: 1em;
+}
+
+h1, h2, h3, p, pre {
     text-align: left;
+    font-family: 'Press Start 2P', cursive;
 }

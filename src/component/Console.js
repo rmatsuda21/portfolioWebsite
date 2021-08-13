@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { parseCommand } from "../scripts/commands";
 
 export function Console() {
@@ -17,6 +17,10 @@ export function Console() {
     const [histIndex, setHistIndex] = useState(-1);
     const [origText, setOrigText] = useState('');
 
+    // TODO: Make sure keyboard input is only taken if window is 'active'
+    // eslint-disable-next-line
+    const [isActice, setIsActive] = useState(false);
+
     function updateText(t, p){
         var s, c, n;
         s = (t.slice(0,p));
@@ -28,9 +32,6 @@ export function Console() {
             n = (t.slice(p+1, t.length));
         else
             n = ('');
-
-        // console.log(pos);
-        // console.log('S:' + s + ' | C:' + c + ' | N:' + n);
 
         setSText(s);
         setCText(c);
@@ -97,22 +98,22 @@ export function Console() {
             }
         }
         else if(key === 'Enter') {
-            if(history.length >= MAX_HIST)
-                setHistory(prevHistory => [...(prevHistory.slice(1)), text]);
-            else
-                setHistory(prevHistory => [...prevHistory, text]);
+            var comm = text.trimEnd();
+            if(comm !== '') {
+                if(history.length >= MAX_HIST)
+                    setHistory(prevHistory => [...(prevHistory.slice(1)), comm]);
+                else
+                    setHistory(prevHistory => [...prevHistory, comm]);
+            }
+            const parsedCommand = parseCommand(comm);
 
-            const parsedCommand = parseCommand(text);
-
-            console.log(parsedCommand.length);
             if(display.length + parsedCommand.length + 1 > MAX_DISP) {
                 const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
-                console.log(overflow);
                 setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
             }
 
-            setDisplay(prevDisp => [...prevDisp, '>'+text]);
-            parsedCommand.forEach(t => {
+            setDisplay(prevDisp => [...prevDisp, '>'+comm]);
+            parsedCommand?.forEach(t => {
                 setDisplay(prevDisp => [...prevDisp, t]);
             });
 
@@ -135,13 +136,13 @@ export function Console() {
     });
 
     const lines = display.map((line, index) => {
-        return <><span key={index}>{line}</span><br/></>;
+        return <React.Fragment key={index}><pre key={index*2}>{line}</pre><br key={index*2+1}/></React.Fragment>;
     });
 
     return (
-        <div style={{whiteSpace:'pre'}}>
+        <div className="console">
             {lines}
-            &gt;<span>{sText}</span><span style={{backgroundColor:'white',color:'black'}}>{cText}</span><span>{nText}</span>
+            <React.Fragment key={-1}>&gt;<pre>{sText}</pre><pre className='current' style={{backgroundColor:'white',color:'black'}}>{cText}</pre><pre >{nText}</pre></React.Fragment>
         </div>
     );
 }
