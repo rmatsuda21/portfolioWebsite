@@ -1,3 +1,5 @@
+import { evaluate } from "mathjs";
+
 const echo = (commands) => {
     var restOfCommand = ''
     for(var i=1;i<commands.length;++i) {
@@ -19,14 +21,28 @@ const help = (commands) => {
 
 const evalComm = (commands) => {
     var restOfCommand = commands.slice(1).join(' ');
-    if(!/[-+/*%=();0-9{ }]*/.test(restOfCommand))
-        return ['Invalid Input!'];
     try {
-        // eslint-disable-next-line
-        return [eval(restOfCommand)];
-    } catch (err) {
-        return ['Syntax Error!'];
+        console.log(evaluate(restOfCommand));
+        try {
+            return [String(evaluate(restOfCommand))];
+        } catch(err) {
+            return [String(err)];
+        }
+    } catch(err) {
+        console.log(err);
+        return [String(err)];
     }
+    return ['test'];
+    // console.log(String(restOfCommand));
+    // console.log(/^[-+/*%=()[0-9]]*$/.test(restOfCommand));
+    // if(!/\d*/.test(restOfCommand))
+    //     return ['Invalid Input!'];
+    // try {
+    //     // eslint-disable-next-line
+    //     return [eval(restOfCommand)];
+    // } catch (err) {
+    //     return ['Syntax Error!'];
+    // }
 }
 
 const goto = (commands) => {
