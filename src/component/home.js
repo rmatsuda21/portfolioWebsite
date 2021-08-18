@@ -4,6 +4,7 @@ import { Icon } from './Icon';
 import { Window } from './Window';
 
 import '../stylesheets/home.css';
+import Taskbar from './TaskBar';
 
 class Home extends Component {
     constructor(props) {
@@ -27,7 +28,7 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '2': {point: [50,350], type: 'icon', icon:'console', text:'Console', action: (()=>{
+                '2': {point: [50,300], type: 'icon', icon:'console', text:'Console', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -38,10 +39,21 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '3': {point: [100,100], 
+                '3': {point: [50,450], type: 'icon', icon:'snake', text:'Snake', action: (()=>{
+                    const { objects, maxID, windowNum } = this.state;
+
+                    var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
+                    objects[String(maxID+1)] = {point: [x,y], 
+                                                type: 'window', 
+                                                windowType: 'snake',
+                                                title: 'Snake'}
+                    this.reorderWindows(maxID+1);
+                    this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
+                })},
+                '4': {point: [100,100], 
                     type: 'window', 
                     order: 0,
-                    windowType: 'intro',
+                    windowType: 'snake',
                     title: 'Hello :D'},
             },
             maxID: 3,
@@ -113,7 +125,6 @@ class Home extends Component {
 
     onClose(id) {
         const { objects, windowNum } = this.state;
-        var thresh;
         if (id in objects) {
             delete objects[id]
             this.reorderWindows()
@@ -164,6 +175,7 @@ class Home extends Component {
                 {objs}
 
             </div>
+            <Taskbar/>
         </BrowserView>
         <MobileView key={2}>
         <div className="mainContent" id="mainContainer">

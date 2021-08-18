@@ -105,14 +105,15 @@ export function Console() {
                 else
                     setHistory(prevHistory => [...prevHistory, comm]);
             }
-            const parsedCommand = parseCommand(comm);
+            const parsedCommand = parseCommand(comm, setDisplay);
 
             if(display.length + parsedCommand.length + 1 > MAX_DISP) {
                 const overflow = (display.length + parsedCommand.length + 1) - MAX_DISP;
                 setDisplay(prevDisp => [...(prevDisp.slice(overflow))]);
             }
 
-            setDisplay(prevDisp => [...prevDisp, '>'+comm]);
+            if(comm !== 'clear')
+                setDisplay(prevDisp => [...prevDisp, '>'+comm]);
             parsedCommand?.forEach(t => {
                 setDisplay(prevDisp => [...prevDisp, t]);
             });

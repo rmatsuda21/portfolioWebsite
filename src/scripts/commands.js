@@ -19,6 +19,11 @@ const help = (commands) => {
     return helpTextArr;
 }
 
+const clear = (commands, setDisplay) => {
+    setDisplay([]);
+    return [];
+}
+
 const evalComm = (commands) => {
     var restOfCommand = commands.slice(1).join(' ');
     try {
@@ -32,7 +37,6 @@ const evalComm = (commands) => {
         console.log(err);
         return [String(err)];
     }
-    return ['test'];
     // console.log(String(restOfCommand));
     // console.log(/^[-+/*%=()[0-9]]*$/.test(restOfCommand));
     // if(!/\d*/.test(restOfCommand))
@@ -55,6 +59,7 @@ const helpText = {
     'echo': 'I will talk back to you!',
     'eval': 'Let me do your math :D',
     'goto': 'Visit my other sites.',
+    'clear': 'Clear display',
 }
 
 const commandDict = {
@@ -62,15 +67,18 @@ const commandDict = {
     'echo': echo,
     'eval': evalComm,
     'goto': goto,
+    'clear': clear,
 }
 
-export function parseCommand(text) {
+export function parseCommand(text, setDisplay) {
     if(text.trim() === '') {
         return [];
     }
 
     var commands = String(text).split(' ');
     if(commands[0] in commandDict) {
+        if(commands[0] === 'clear')
+            return commandDict[commands[0]](commands, setDisplay);
         return commandDict[commands[0]](commands);
     }
     return [`${commands[0]}: command not found. To see a list of commands use help`];
