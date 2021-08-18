@@ -1,0 +1,9 @@
+.gameBoard {
+    display: grid;
+    position: relative;
+    align-content: center;
+}
+
+.gameBoard > div {
+    display: block;
+}

@@ -2,6 +2,7 @@ import { Component } from "react";
 import '../stylesheets/window.css';
 import { Console } from "./Console";
 import resume from '../docs/Matsuda_Resume.pdf';
+import Snake from './Snake';
 
 export class Window extends Component {
     render() {
@@ -27,6 +28,10 @@ export class Window extends Component {
                             <p style={{textAlign:'center'}}>Interactive portfolio built by: Reo Matsuda</p>
                             <p style={{textAlign:'center'}}>Come back for more updates</p>
                            </div>);
+                openBtn = null;
+                break;
+            case 'snake':
+                content = (<Snake/>); 
                 openBtn = null;
                 break;
             default: content = null; console.log(`Error: Unknown type: ${this.props.windowType}`);
