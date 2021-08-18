@@ -50,13 +50,13 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '4': {point: [100,100], 
+                '4': {point: [300,125], 
                     type: 'window', 
                     order: 0,
-                    windowType: 'snake',
+                    windowType: 'intro',
                     title: 'Hello :D'},
             },
-            maxID: 3,
+            maxID: 4,
             windowNum: 0,
         };
 
