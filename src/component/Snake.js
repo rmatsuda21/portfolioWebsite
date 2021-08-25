@@ -1,8 +1,9 @@
 import { randomInt } from "mathjs";
-import { Component } from "react";
+import React, { Component } from "react";
 import '../stylesheets/snake.css';
 
 class Snake extends Component {
+    
     constructor(props) {
         super(props);
 
@@ -10,16 +11,19 @@ class Snake extends Component {
             timeout: 150,
             gameOver: false,
             boardSize: { width: 20, height: 10 },
+            windowSize: { width: 0, height: 0},
             cellSize: 30,
             snake: [],
             food: [],
             direction: 0,
             directionVal: [[1,0],[0,-1],[-1,0],[0,1]],
             timerID: 0,
+            score: 0,
             key: 0,
         }
 
         this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.cont = React.createRef();
     }
 
     init() {
@@ -44,7 +48,8 @@ class Snake extends Component {
                         snake, 
                         gameOver: false, 
                         direction: 0,
-                        timeout: 150 });
+                        timeout: 150,
+                        score: 0 });
     }
 
     handleKeyDown(e) {
@@ -74,6 +79,12 @@ class Snake extends Component {
     }
 
     componentDidMount() {
+        const w = this.cont.current.offsetParent.clientWidth;
+        const h = this.cont.current.offsetParent.clientHeight;
+        const bW = Math.floor(w/this.state.cellSize);
+        const bH = Math.floor(h/this.state.cellSize)-1;
+        this.setState({windowSize: { width: w, height: h }, boardSize: { width: bW, height: bH }})
+
         this.gameLoop();
         window.addEventListener('keydown', this.handleKeyDown);
         this.init();
@@ -105,14 +116,16 @@ class Snake extends Component {
 
     moveHead() {
         var snake = this.state.snake;
+        var gameOver = false;
         // console.log(this.state.directionVal[this.state.direction]);
         snake[0].x += this.state.directionVal[this.state.direction][0];
         snake[0].y += this.state.directionVal[this.state.direction][1];
 
         // Check for lose state
-        if(snake[0].x < 0 || snake[0].x > this.state.boardSize.width || snake[1].y < 0 || snake[1].y > this.state.boardSize.height)
-            this.setState({gameOver: true});
-        this.setState({snake});
+        if(snake[0].x < 0 || snake[0].x >= this.state.boardSize.width || snake[1].y < 0 || snake[1].y >= this.state.boardSize.height)
+            // this.setState({gameOver: true});
+            gameOver = true
+        this.setState({snake, gameOver});
     }
 
     isOverlap(p1, p2) {
@@ -122,6 +135,9 @@ class Snake extends Component {
     eatFood(index) {
         var snake = this.state.snake;
         var food = this.state.food;
+        var score = this.state.score + 1;
+
+        this.props.changeTitle(`Snake Score: ${score}`);
 
         snake.push({x:food[index].x, y:food[index].y});
         
@@ -133,9 +149,9 @@ class Snake extends Component {
 
         food[index] = newFood;
         
-        var timeout = this.state.timeout - 10;
+        var timeout = score % 10 === 0 ? this.state.timeout - 10 : this.state.timeout;
 
-        this.setState({ snake, food, timeout });
+        this.setState({ snake, food, timeout, score });
     }
 
     checkCollisions() {
@@ -191,16 +207,15 @@ class Snake extends Component {
             <div key={'f'+index} style={{position: "absolute",
                          left: `${f.x*cellSize}px`,
                          top: `${f.y*cellSize}px`, 
-                         backgroundColor:'white', 
+                         backgroundColor:'green', 
                          height: `${cellSize}px`,
                          width: `${cellSize}px`}}/>)
         });
 
         return (
-            <div style={{gridTemplateColumns:`repeat(${10}, auto)`, width:'300px'}} className='gameBoard'>
+            <div style={{gridTemplateColumns:`repeat(${10}, auto)`}} className='gameBoard' ref={this.cont}>
                 { snake }
                 { food }
-                {/* {this.state.key} */}
             </div>
     )}
 }
