@@ -46,7 +46,9 @@ class Home extends Component {
                     objects[String(maxID+1)] = {point: [x,y], 
                                                 type: 'window', 
                                                 windowType: 'snake',
-                                                title: 'Snake'}
+                                                title: 'Snake',
+                                                width: '600px',
+                                                height: '480px'}
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
@@ -149,6 +151,8 @@ class Home extends Component {
                     var title = objects[i].title ? objects[i].title : 'New Window';
                     var windowType = objects[i].windowType ? objects[i].windowType : 'default';
                     var url = objects[i].url ? objects[i].url : '';
+                    var width = objects[i].width ? objects[i].width : null;
+                    var height = objects[i].height ? objects[i].height : null; 
                     objs.push(<Window key={i} 
                                     id={i} 
                                     title={title}
@@ -157,6 +161,8 @@ class Home extends Component {
                                     top={coord[1]} 
                                     url={url} 
                                     zIndex={windowNum - objects[i].order}
+                                    width={width}
+                                    height={height}
                                     onMouseDown={this.onMouseDown} 
                                     onMouseUp={this.onMouseUp} 
                                     onClose={this.onClose}/>);

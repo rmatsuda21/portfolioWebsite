@@ -5,23 +5,6 @@ import console from '../icons/console.png';
 import snake from '../icons/snake.png';
 
 export class Icon extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     // this.onDrag = this.onDrag.bind(this);
-        
-    //     this.state = {
-    //         top: 300,
-    //         left: 250,
-    //         mouseX: 0,
-    //         mouseY: 0,
-    //         mouseDown: false
-    //     }
-    // }
-
-    // componentDidMount() {
-    //     this.setState({top: this.props.top, left: this.props.left});
-    // }
-
     render() {
         var img;
         switch(this.props.icon) {

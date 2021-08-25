@@ -5,6 +5,24 @@ import resume from '../docs/Matsuda_Resume.pdf';
 import Snake from './Snake';
 
 export class Window extends Component {
+    constructor(props) {
+        super(props);
+
+        this.changeTitle = this.changeTitle.bind(this);
+
+        this.state = {
+            title: "",
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ title: this.props.title })
+    }
+
+    changeTitle(title) {
+        this.setState({ title });
+    }
+
     render() {
         var content;
         var openBtn;
@@ -31,7 +49,7 @@ export class Window extends Component {
                 openBtn = null;
                 break;
             case 'snake':
-                content = (<Snake/>); 
+                content = (<Snake changeTitle={this.changeTitle}/>); 
                 openBtn = null;
                 break;
             default: content = null; console.log(`Error: Unknown type: ${this.props.windowType}`);
@@ -39,13 +57,13 @@ export class Window extends Component {
 
         return (
             <div className='window' 
-                 style={{top: this.props.top, left: this.props.left, zIndex: this.props.zIndex}}>
+                 style={{ top: this.props.top, left: this.props.left, zIndex: this.props.zIndex, width: this.props.width, height: this.props.height }}>
                 <div className='border'
                      onMouseDown={this.props.onMouseDown}
                      onMouseUp={this.props.onMouseUp}
                      id={this.props.id}
                 >
-                    <span unselectable='on'>{this.props.title}</span>
+                    <span unselectable='on'>{this.state.title}</span>
                     {openBtn}
                     <div className='closeBtn' title="Close" onClick={() => {this.props.onClose(this.props.id)}}>X</div>
                 </div>
