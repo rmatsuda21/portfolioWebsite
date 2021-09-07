@@ -17,7 +17,7 @@ class Home extends Component {
             dragID: '',
             dragAnchor: [0,0],
             objects: {
-                '1': {point: [50,150], type: 'icon', icon:'resume', text:'Resume', action: (()=>{
+                '1': {point: [50,100], type: 'icon', icon:'resume', text:'Resume', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -28,7 +28,7 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '2': {point: [50,300], type: 'icon', icon:'console', text:'Console', action: (()=>{
+                '2': {point: [50,250], type: 'icon', icon:'console', text:'Console', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -39,7 +39,7 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '3': {point: [50,450], type: 'icon', icon:'snake', text:'Snake', action: (()=>{
+                '3': {point: [50,400], type: 'icon', icon:'snake', text:'Snake', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -52,13 +52,26 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '4': {point: [300,125], 
+                '4': {point: [50,550], type: 'icon', icon:'mine', text:'Minesweeper', action: (()=>{
+                    const { objects, maxID, windowNum } = this.state;
+
+                    var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
+                    objects[String(maxID+1)] = {point: [x,y], 
+                                                type: 'window', 
+                                                windowType: 'mine',
+                                                title: 'Minesweeper',
+                                                width: '600px',
+                                                height: '480px'}
+                    this.reorderWindows(maxID+1);
+                    this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
+                })},
+                '5': {point: [300,125], 
                     type: 'window', 
                     order: 0,
                     windowType: 'intro',
                     title: 'Hello :D'},
             },
-            maxID: 4,
+            maxID: 5,
             windowNum: 0,
         };
 

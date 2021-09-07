@@ -3,6 +3,7 @@ import '../stylesheets/window.css';
 import { Console } from "./Console";
 import resume from '../docs/Matsuda_Resume.pdf';
 import Snake from './Snake';
+import { Minesweeper } from "./Minesweeper";
 
 export class Window extends Component {
     constructor(props) {
@@ -50,6 +51,10 @@ export class Window extends Component {
                 break;
             case 'snake':
                 content = (<Snake changeTitle={this.changeTitle}/>); 
+                openBtn = null;
+                break;
+            case 'mine':
+                content = <Minesweeper/>;
                 openBtn = null;
                 break;
             default: content = null; console.log(`Error: Unknown type: ${this.props.windowType}`);
