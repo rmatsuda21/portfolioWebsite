@@ -3,6 +3,7 @@ import icon from '../icons/ie.png';
 import resume from '../icons/resume.png';
 import console from '../icons/console.png';
 import snake from '../icons/snake.png';
+import mine from '../icons/mine.png';
 
 export class Icon extends Component {
     render() {
@@ -16,6 +17,9 @@ export class Icon extends Component {
                 break;
             case 'snake':
                 img = <img src={snake} alt="Icon img"/>;
+                break;
+            case 'mine':
+                img = <img src={mine} alt="Icon img"/>;
                 break;
             default:
                 img = <img src={icon} alt="Icon img"/>;

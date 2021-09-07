@@ -1,0 +1,83 @@
+.gameBoard {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: lightgrey;
+}
+
+.gameBoard .top {
+    display: flex;
+    padding: 0 1.25rem;
+
+    width: calc(100% - 2.5rem);
+    
+    height: 50px;
+
+    background-color: gray;
+
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+
+    color: red;
+}
+
+.top .left, .top .timer {
+    background-color: black;
+    text-align: center;
+    padding: .25rem;
+}
+
+.top .resetBtn {
+    color: black;
+    cursor: pointer;
+    background-color: white;
+    padding: .25rem;
+    border: 3px outset;
+}
+
+.top .resetBtn:hover {
+    border-style: inset;
+}
+
+.gameBoard .grid {
+    margin: auto;
+    display: grid;
+}
+
+.gameBoard .grid > * {
+    border-style: outset;
+    border-width: 2px;
+}
+
+.gameBoard .cell {
+    cursor: pointer;
+    display: flex;
+
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    color: black;
+}
+
+.gameBoard .revealed {
+    cursor: default !important;
+    display: flex;
+
+    border-style: solid !important;
+    border-width: .5px;
+    background-color: lightgray !important;
+
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 15px;
+    color: black;
+}
+
+.gameBoard .cell:hover {
+    border-style: inset;
+}

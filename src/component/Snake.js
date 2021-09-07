@@ -183,8 +183,9 @@ class Snake extends Component {
     render() {
         if(this.state.gameOver) {
             return(
-                <div style={{flexGrow:1}}>
+                <div style={{flexGrow:1, }}>
                     <h1 style={{textAlign:'center'}}>GAME OVER</h1>
+                    <h3 style={{textAlign:'center'}}>Score: {this.state.score}</h3>
                     <h4 style={{textAlign:'center'}}>Press Space to restart</h4>
                 </div>
             )
