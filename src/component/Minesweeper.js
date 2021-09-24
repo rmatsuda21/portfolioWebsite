@@ -5,7 +5,7 @@ import '../stylesheets/minesweeper.css';
 import mine from '../icons/mine.png';
 import flag from '../icons/flag.png';
 
-export class Minesweeper extends Component {
+class Minesweeper extends Component {
     constructor(props) {
         super(props);
 
@@ -19,7 +19,7 @@ export class Minesweeper extends Component {
             state: [[0]],
             flagNum: 0,
             correctFlagNum: 0,
-            bombNum: 1,
+            bombNum: 15,
             bombs: [],
             timerID: 0,
             timeout: 1000,

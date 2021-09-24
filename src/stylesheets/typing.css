@@ -1,0 +1,67 @@
+.typingMain {
+    --active-text-color: white;
+    --deactive-text-color: #969696;
+    --sample-text-back: #454545;
+    --input-area: #c4c4c4;
+
+    --correct: #46BE52;
+    --wrong: #F64949;
+    --neutral: #6C9DFD;
+
+    font-family: 'Space Mono';
+    background-color: #323232;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.typingMain > * {
+    width: 90%;
+    padding: 10px;
+}
+
+.sampleText {
+    background-color: var(--sample-text-back);
+    color: var(--deactive-text-color);
+    margin-top: 5rem;
+    max-height: 35%;
+    overflow: scroll;
+}
+
+input.wrong {
+    color: white !important;
+    background-color: var(--wrong);
+}
+
+.correct {
+    color: var(--correct) !important;
+}
+
+.wrong {
+    color: var(--wrong) !important;
+}
+
+.neutral {
+    color: var(--neutral) !important;
+}
+
+.active {
+    color: var(--active-text-color) !important;
+}
+
+input:focus {
+    outline: none;
+}
+
+input {
+    font-family: 'Space Mono';
+    font-size: 1.5rem;
+    background-color: var(--input-area);
+
+    border: none;
+    margin-top: 4rem;
+}
