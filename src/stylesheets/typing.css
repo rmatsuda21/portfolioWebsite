@@ -1,3 +1,11 @@
+body::before {
+    content: none !important;
+}
+
+body {
+    font-size: 20pt;
+}
+
 .typingMain {
     --active-text-color: white;
     --deactive-text-color: #969696;
@@ -59,7 +67,7 @@ input:focus {
 
 input {
     font-family: 'Space Mono';
-    font-size: 1.5rem;
+    font-size: 1em;
     background-color: var(--input-area);
 
     border: none;
