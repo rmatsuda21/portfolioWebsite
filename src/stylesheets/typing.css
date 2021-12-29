@@ -1,6 +1,6 @@
-body::before {
+/* body::before {
     content: none !important;
-}
+} */
 
 body {
     font-size: 20pt;
