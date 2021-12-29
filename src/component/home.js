@@ -60,8 +60,8 @@ class Home extends Component {
                                                 type: 'window', 
                                                 windowType: 'mine',
                                                 title: 'Minesweeper',
-                                                width: '600px',
-                                                height: '480px'}
+                                                width: 'auto',
+                                                height: 'auto'}
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
@@ -95,6 +95,7 @@ class Home extends Component {
                 objects[i].order++;
             }
         }
+        console.log(objects);
         this.setState({objects:objects});
     }
 

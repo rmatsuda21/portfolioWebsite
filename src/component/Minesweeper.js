@@ -12,7 +12,7 @@ class Minesweeper extends Component {
         this.state = {
             gameOver: false,
             win: false,
-            boardSize: { width: 10, height: 10 },
+            boardSize: { width: 20, height: 20 },
             windowSize: { width: 0, height: 0},
             cellSize: 30,
             board: [[0]],
@@ -26,20 +26,10 @@ class Minesweeper extends Component {
             time: 0,
         }
 
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+        // this.handleKeyDown = this.handleKeyDown.bind(this);
         this.resetGame = this.resetGame.bind(this);
         // this.handleClick = this.handleClick.bind(this);
         this.container = React.createRef();
-    }
-
-    handleKeyDown(e) {
-        switch(e.keyCode) {
-            default:
-        }
-    }
-
-    handleClick = (e, coord) => {
-        console.log(e.target);
     }
 
     resetGame() {
@@ -213,6 +203,8 @@ class Minesweeper extends Component {
                     que.push([p[0],p[1]+1]);
                 }
             }
+
+            console.log(que);
         }
     }
 
@@ -254,6 +246,7 @@ class Minesweeper extends Component {
     }
 
     render() {
+        console.log('Render')
         const { board, boardSize, state } = this.state;
 
         const grid = [];

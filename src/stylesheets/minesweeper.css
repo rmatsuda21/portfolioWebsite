@@ -10,6 +10,7 @@
     padding: 0 1.25rem;
 
     width: calc(100% - 2.5rem);
+    /* width: 50%; */
     
     height: 50px;
 
@@ -41,7 +42,7 @@
 }
 
 .gameBoard .grid {
-    margin: auto;
+    margin: 1rem;
     display: grid;
 }
 
