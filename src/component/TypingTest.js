@@ -18,7 +18,7 @@ class TypingTest extends Component {
 
         this.state = {
             text: "Est ullamco quis id enim sunt dolor nostrud sint.",
-            textLength: 25,
+            textLength: 50,
             topPopular: 500,
             startTime: -1,
             wpm: -1,
@@ -173,7 +173,7 @@ class TypingTest extends Component {
 
         return(
             <div className="typingMain" onKeyDown={this.onKeyDownHandle}>
-                <div className="wpm">WPM: {this.state.wpm}</div>
+                <div className="wpm" style={{marginTop:'auto'}}>WPM: {this.state.wpm}</div>
                 <div className="sampleText">
                     <b>{t}</b>
                 </div>
