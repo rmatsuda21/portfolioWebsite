@@ -52,7 +52,7 @@ class Home extends Component {
                     this.reorderWindows(maxID+1);
                     this.setState({objects: objects, maxID: maxID+1, windowNum: windowNum+1});
                 })},
-                '4': {point: [50,550], type: 'icon', icon:'mine', text:'Minesweeper', action: (()=>{
+                '4': {point: [50,550], type: 'icon', icon:'mine', text:'Mine Sweeper', action: (()=>{
                     const { objects, maxID, windowNum } = this.state;
 
                     var x = window.innerWidth/2 - 675/2, y = window.innerHeight/2 - 500/2;
@@ -72,7 +72,7 @@ class Home extends Component {
                     title: 'Hello :D'},
             },
             maxID: 5,
-            windowNum: 0,
+            windowNum: 1,
         };
 
         this.onMouseMove = this.onMouseMove.bind(this);
@@ -82,7 +82,7 @@ class Home extends Component {
     }
 
     reorderWindows(id) {
-        const { objects, windoNum } = this.state;
+        var { objects, windoNum, maxID } = this.state;
         var thresh;
         if(id) {
             thresh = objects[id].order ? objects[id].order : 0
@@ -143,6 +143,7 @@ class Home extends Component {
         const { objects, windowNum } = this.state;
         if (id in objects) {
             delete objects[id]
+
             this.reorderWindows()
         }
         
@@ -187,7 +188,7 @@ class Home extends Component {
         }
 
         return (
-        <>
+        <div className="monitor" style={{height:'100vh'}}>
         <BrowserView key={1}>
             <div className="mainContent" id="mainContainer" onMouseMove={this.onMouseMove}>
                 <h1 style={{textAlign:'center', pointerEvents:'none'}}>Howdy!</h1>
@@ -202,7 +203,7 @@ class Home extends Component {
             <h1>IS MOBILE</h1>
         </div>
         </MobileView>
-        </>
+        </div>
         );
     }
 }

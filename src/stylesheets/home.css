@@ -7,7 +7,7 @@ body {
     color: white;
 }
 
-body::before {
+.monitor::before {
     content: " ";
     display: block;
     position: absolute;

@@ -246,7 +246,6 @@ class Minesweeper extends Component {
     }
 
     render() {
-        console.log('Render')
         const { board, boardSize, state } = this.state;
 
         const grid = [];

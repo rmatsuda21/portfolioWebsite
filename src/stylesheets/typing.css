@@ -2,9 +2,9 @@
     content: none !important;
 } */
 
-body {
+/* body {
     font-size: 20pt;
-}
+} */
 
 .typingMain {
     --active-text-color: white;
@@ -17,6 +17,7 @@ body {
     --neutral: #6C9DFD;
 
     font-family: 'Space Mono';
+    font-size: 20pt;
     background-color: #323232;
 
     height: 100%;
@@ -35,8 +36,10 @@ body {
 .sampleText {
     background-color: var(--sample-text-back);
     color: var(--deactive-text-color);
-    margin-top: 5rem;
-    max-height: 35%;
+    /* margin-top: 5rem; */
+    margin: 0 auto;
+    /* margin-bottom: 1rem; */
+    /* max-height: 35%; */
     overflow: scroll;
 }
 
@@ -71,5 +74,6 @@ input {
     background-color: var(--input-area);
 
     border: none;
-    margin-top: 4rem;
+    margin: auto;
+    margin-top: 3rem;
 }
