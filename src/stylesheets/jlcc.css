@@ -1,0 +1,642 @@
+:root {
+    --jlcc-main: #FF6F6F;
+    --jlcc-mobile-header: #FFF6F6;
+    --jlcc-sub: #339F01;
+    --jlcc-text: black;
+    --jlcc-s1: #ebebeb;
+    --jlcc-background: white;
+}
+
+body { 
+    /* transition: back 0.1s ease-in-out 0s; */
+}
+
+.bg {
+    z-index: 0;
+}
+
+.jlcc-main, .jlcc-main > * {
+    transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -webkit-transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -moz-transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -o-transition: background-color 0.3s ease-in, color 0.3s ease-in;
+}
+
+.jlcc-main * {
+    font-family: 'Rubik', sans-serif !important;
+    
+    margin: 0;
+    padding: 0;
+}
+
+.jlcc-main {
+    /* transition: all 0.3s ease-in-out; */
+    /* transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -webkit-transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -moz-transition: background-color 0.3s ease-in, color 0.3s ease-in;
+    -o-transition: background-color 0.3s ease-in, color 0.3s ease-in; */
+
+    background-color: var(--jlcc-background);
+    
+    color: var(--jlcc-text);
+    min-height: 100vh;
+}
+
+/* Navbar */
+
+.jlcc-navbar {
+    display: flex;
+    height: auto;
+
+    padding-top: 1em;
+}
+
+.jlcc-logo {
+    min-width: 150px;
+    width: 150px;
+    margin-inline: 25px;
+    display: inline-block;
+    z-index: 1;
+
+    transition: all 0.2s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.jlcc-logo:hover {
+    filter: invert(100%);
+    cursor: pointer;
+}
+
+.jlcc-navbar-tabs {
+    display: inline-flex;
+    font-size: 20px;
+
+    background-color: var(--jlcc-s1);
+    justify-content: space-between;
+
+    margin-block: auto;
+    margin-left: auto;
+
+    padding-block: 1.5em;
+    min-height: 0vw;
+    padding-inline: clamp(1em, 8vw, 100em);
+}
+
+.jlcc-navbar-tabs > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--jlcc-text);
+
+    min-height: 0vw;
+    padding-inline: clamp(1em, 3vw, 2em);
+
+    transition: all .2s ease-in-out;
+}
+
+.jlcc-navbar-tabs > a:hover {
+    color: var(--jlcc-main);
+}
+
+@media screen and (max-width:600px) {
+    .jlcc-navbar-tabs {
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        width: 100%;
+        height: 0;
+        padding: 0;
+
+        overflow: hidden;
+    
+        background-color: var(--jlcc-s1);
+
+        margin: auto;
+
+        transition: height .5s ease-in-out;
+    }
+
+    .open {
+        height: 250px;
+    }
+
+    .jlcc-navbar-tabs > a {
+        width: fit-content;
+        margin-inline: auto;
+    }
+
+    .jlcc-navbar-menu-container {
+        z-index: 99999;
+
+        width: 40px;
+        height: 40px;
+
+        position: fixed;
+
+        top: 40px;
+        right: 40px;
+    }
+
+    .jlcc-navbar-menu-container:hover {
+        filter: brightness(1.3);
+        cursor: pointer;
+    }
+
+    .jlcc-navbar-menu {
+        position: absolute;
+        display: block;
+
+        width: 100%;
+        height: 6px;
+
+        border-radius: 50px;
+
+        background-color: var(--jlcc-main);
+    }
+
+    .jlcc-navbar-menu::before,  .jlcc-navbar-menu::after{
+        content: " ";
+
+        position: absolute;
+        width: 100%;
+        height: 6px;
+
+        border-radius: 50px;
+    }
+
+    .jlcc-navbar-menu::before {
+        top: 15px;
+        background-color: var(--jlcc-sub);
+    }
+
+    .jlcc-navbar-menu::after {
+        top: 30px;
+        background-color: #888;
+    }
+}
+
+/* ////////// */
+/* // Hero //*/
+/* ////////// */
+
+.jlcc-hero {
+    display: flex;
+
+    position: relative;
+    z-index: 2;
+
+    justify-content: space-between;
+
+    margin-inline: 4rem;
+    margin-block: 2em;
+}
+
+.jlcc-hero-text {
+    margin: auto;
+
+    height: fit-content;
+    position: relative;
+}
+
+.jlcc-hero-text-uni {
+    font-weight: 900;
+    font-size: 25px;
+}
+
+.jlcc-hero-text-main {
+    font-weight: 500;
+    font-size: clamp(45px, 6vw, 70px);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.jlcc-text-s {
+    color: var(--jlcc-main);
+    font-weight: 600;
+}
+
+.jlcc-hero-text-and {
+    font-size: 30px;
+    margin-inline: 1rem;
+}
+
+.jlcc-hero-text-cover {
+    content: " ";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--jlcc-background);
+    animation: cover-anim .95s ease-in-out .5s forwards;
+}
+
+.jlcc-hero-text-main::before{
+    background-color: var(--jlcc-text);
+
+    z-index: 999;
+
+    content: " ";
+    position: absolute;
+
+    left: 100%;
+    top: -3px;
+
+    width: 15px;
+    height: 100%;
+
+    animation: bar-anim 1s ease-in-out .5s forwards;
+}
+
+@keyframes cover-anim {
+    from { width: 100%; }
+    to { width: 0; }
+}
+
+@keyframes bar-anim {
+    from { left: 100%; }
+    to { left: -35px; }
+}
+
+.jlcc-sakura-left {
+    position: absolute;
+    top: clamp(40px, 4vw, 40px);
+    left: -10vw;
+
+    transform: rotate(15deg);
+
+    width: clamp(600px, 50vw, 1400px);
+}
+
+@media screen and (max-width:600px) {
+    .jlcc-hero {
+        flex-direction: column;
+
+        margin-inline: auto;;
+        align-items: center;
+    }
+
+    .jlcc-hero-text {
+        margin-inline: 2em;
+        margin-bottom: 2em;
+    }
+
+    .jlcc-hero-text-main {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        gap: 2vw;
+
+        font-size: 8.3vw;
+    }
+
+    .jlcc-hero-text-and {
+        font-size: 4vw;
+        margin-left: 1rem;
+        margin-right: 0;
+    }
+
+    .jlcc-hero-text-uni {
+        font-size: 4.5vw;
+    }
+
+    .jlcc-hero-text-main::before{
+        content: "";
+        width: 0;
+    
+        animation: none;
+    }
+
+    .jlcc-hero-text-cover {
+        content: "";
+        width: 0;
+
+        animation: none;
+    }
+}
+
+/* ///////////// */
+/* // Carasol // */
+/* ///////////// */
+
+.jlcc-hero-carasol-img-container {
+    /* max-width: 500px; */
+    width: clamp(250px, 50vw, 600px);
+}
+
+.jlcc-hero-carasol-img-container > img {
+    width: 100%;
+}
+
+@media screen and (max-width:600px) {
+    .jlcc-hero-carasol-img-container {
+        width: 75vw;
+    }
+}
+
+/* ///////////// */
+/* //   Mid   // */
+/* ///////////// */
+
+.jlcc-mid {
+    width: 100%;
+
+    position: relative;
+    z-index: 2;
+
+    background-color: var(--jlcc-s1);
+
+    text-align: center;
+    font-size: clamp(20px, 4vw, 45px);
+
+    padding-block: 1em;
+
+    line-height: 1.5;
+}
+
+/* //////////////// */
+/* // What we do // */
+/* //////////////// */
+
+.jlcc-heading {
+    text-align: center;
+    position: relative;
+
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.jlcc-heading h1, .jlcc-heading h2{
+    text-align: center;
+}
+
+.jlcc-heading h1 {
+    position: relative;
+    display: block;
+
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: .5em;
+
+    font-size: 55px;
+    font-weight: 900;
+}
+
+.jlcc-heading h1::before, .jlcc-heading h1::after {
+    content: " ";
+    position: absolute;
+    width: 10vw;
+    height: 8px;
+
+    top: 27px;
+
+    background-color: #ccc;
+}
+
+.jlcc-heading h1::before {
+    left: calc(-10vw - 20px);
+}
+
+.jlcc-heading h1::after {
+    right: calc(-10vw - 20px);
+}
+
+.jlcc-heading h2 {
+    font-size: 33px;
+    font-weight: 300;
+
+    margin-block: .25em;
+
+    color: var(--jlcc-sub);
+}
+
+@media screen and (max-width:600px) {
+    .jlcc-heading h1::before, .jlcc-heading h1::after {
+        content: "";
+        width: 0;
+    }
+
+    .jlcc-heading > h1{
+        padding-top: 5px;
+    }
+
+    .jlcc-heading > h2{
+        padding-bottom: 5px;
+    }
+
+    .jlcc-heading {
+        width: 100%;
+        background-color: var(--jlcc-mobile-header);
+    }
+}
+
+/* //////////////// */
+/* //  Meetings  // */
+/* //////////////// */
+
+.jlcc-card-container {
+    display: flex;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 88vw;
+    column-gap: clamp(1px, 5vw, 100px);
+    row-gap: 3em;
+
+    margin-inline: auto;
+    margin-block: 2.5em;
+}
+
+.jlcc-card {
+    display: inline-block;
+    width: 320px;
+}
+
+.jlcc-card-icon {
+    height: 110px;
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.jlcc-card h3 {
+    font-size: 28px;
+    font-weight: 600;
+
+    text-align: center;
+    padding-block: 15px;
+
+    color: var(--jlcc-main);
+}
+
+.jlcc-card p {
+    font-size: 22px;
+    width: 285px;
+    margin-inline: auto;
+    text-align: center;
+
+    line-height: 1.5;
+}
+
+.jlcc-card p span {
+    color: var(--jlcc-sub);
+    text-align: center;
+}
+
+/* //////////////// */
+/* //   Events   // */
+/* //////////////// */
+
+.jlcc-event-grid-container {
+    display: grid;
+    margin-inline: auto;
+    margin-block: 2em;
+
+    gap: clamp(10px, 1.5vw, 20px);
+    grid-auto-columns: 24vw;
+    grid-auto-rows: 24vw;
+
+    width: fit-content;
+}
+
+.jlcc-event-grid-item {
+    overflow: hidden;
+
+    position: relative;
+}
+
+.jlcc-event-grid-item-last{
+    background-color: var(--jlcc-s1);
+    display: flex;
+    position: relative;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding-inline: 2em;
+
+    min-height: 0vw;
+    font-size: clamp(30px, 3.75vw, 60px);
+    font-weight: 600;
+}
+
+.jlcc-bottom-card-icon {
+    position: absolute;
+    min-height: 0vw;
+    width: clamp(60px, 10vw, 100px);
+}
+
+.jlcc-daruma {
+    top: 20px;
+    left: 20px;
+
+    transform: rotate(-25deg);
+}
+
+.jlcc-fuji {
+    bottom: 20px;
+    right: 20px;
+
+    transform: rotate(20deg);
+}
+
+.jlcc-event-grid-item img{
+    height: 100%;
+    display: block;
+    object-position: 50% 50%;
+    object-fit: cover;
+}
+
+@media screen and (max-width:600px) {
+    .jlcc-event-grid-container {
+        display: flex !important;
+        width: 70vw !important;
+
+        position: relative;
+
+        flex-direction: column;
+
+        gap: 7vw;
+    }
+
+    .jlcc-event-grid-item {
+        width: 100%;
+        aspect-ratio: 1;
+    }
+
+    .jlcc-event-grid-item-last {
+        width: calc(100% - 1em);
+        padding: .5em;
+        aspect-ratio: 1;
+
+        font-size: 9vw;
+    }
+
+    .jlcc-daruma {
+        top: 20px;
+        left: -10px;
+    
+        transform: rotate(-25deg) scale(2.3);
+    }
+    
+    .jlcc-fuji {
+        bottom: 10px;
+        right: -20px;
+    
+        transform: rotate(20deg) scale(2.35);
+    }
+}
+
+/* //////////////// */
+/* //   Connect  // */
+/* //////////////// */
+
+.jlcc-icon-container {
+    display: flex;
+
+    margin-block: 5em;
+
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.jlcc-connect-icon {
+    display: block;
+
+    width: clamp(50px, 25vw, 200px);
+}
+
+.jlcc-connect-icon svg:hover{
+    fill: grey;
+}
+
+/* //////////////// */
+/* //   Footer   // */
+/* //////////////// */
+
+.jlcc-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    width: 100vw;
+    padding-block: 1.25em;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    background-color: var(--jlcc-s1);
+}

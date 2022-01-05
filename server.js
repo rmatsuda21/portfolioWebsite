@@ -16,11 +16,11 @@ app.get('/ping', function (req, res) {
     return res.json('test');
 });
 
-app.get('/grades', function(req, res) {
+app.get('/grades', function (req, res) {
     var data;
     fetch('https://h4nk1vdycb.execute-api.us-east-2.amazonaws.com/prod?course=121')
         .then(res => res.json())
-        .then(res => {data = res})
+        .then(res => { data = res })
         .then(() => {
             res.json(data);
         })
@@ -28,7 +28,12 @@ app.get('/grades', function(req, res) {
 });
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.get('/jlcc', function (req, res) {
+    console.log('JLCC')
+    res.sendFile(path.join(__dirname, 'build', 'jlcc.html'));
 });
 
 const port = process.env.PORT || 8080;
