@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap');
 
 :root {
   /* --background: #A0C4FF;
@@ -12,15 +13,6 @@
 
 * {
   font-variant-ligatures: none;
-}
-
-body {
-  margin: 0;
-  font-family: 'Press Start 2P', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* background-color: var(--background); */
-  background-color:skyblue;
 }
 
 p {

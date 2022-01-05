@@ -16,13 +16,18 @@ app.get('/ping', function (req, res) {
     return res.json('test');
 });
 
-app.get('/grades', function(req, res) {
+app.get('/grades', function (req, res) {
     var data;
     // WIP feature :D
 });
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.get('/jlcc', function (req, res) {
+    console.log('JLCC')
+    res.sendFile(path.join(__dirname, 'build', 'jlcc.html'));
 });
 
 const port = process.env.PORT || 8080;
