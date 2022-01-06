@@ -18,13 +18,7 @@ app.get('/ping', function (req, res) {
 
 app.get('/grades', function (req, res) {
     var data;
-    fetch('https://h4nk1vdycb.execute-api.us-east-2.amazonaws.com/prod?course=121')
-        .then(res => res.json())
-        .then(res => { data = res })
-        .then(() => {
-            res.json(data);
-        })
-        .catch(err => console.log(err));
+    // WIP feature :D
 });
 
 app.get('*', function (req, res) {
