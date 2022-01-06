@@ -120,7 +120,7 @@ const Fuji = (props) => {
 
 const Discord = (props) => {
     return (
-        <a className="jlcc-connect-icon" href="https://google.com">
+        <a className="jlcc-connect-icon" href="https://discord.gg/DhScq4g">
         <svg xmlns="http://www.w3.org/2000/svg" fill="black" viewBox="0 0 220 168">
         <path d="M186.351 14.679a.56.56 0 0 0-.285-.261A181.406 181.406 0 0 0 141.387.601a.68.68 0 0 0-.718.339 125.592 125.592 0 0 0-5.562 11.394 167.59 167.59 0 0 0-50.18 0A115.132 115.132 0 0 0 79.276.94.705.705 0 0 0 78.557.6a180.89 180.89 0 0 0-44.68 13.817.64.64 0 0 0-.293.252C5.128 57.06-2.667 98.407 1.157 139.242a.75.75 0 0 0 .286.512 182.243 182.243 0 0 0 54.81 27.626.715.715 0 0 0 .77-.252 129.658 129.658 0 0 0 11.212-18.187.696.696 0 0 0-.134-.809.691.691 0 0 0-.246-.155 120.028 120.028 0 0 1-17.123-8.137.712.712 0 0 1-.345-.564.701.701 0 0 1 .276-.6 94.319 94.319 0 0 0 3.4-2.658.675.675 0 0 1 .71-.095c35.922 16.353 74.813 16.353 110.31 0a.68.68 0 0 1 .718.087 88.147 88.147 0 0 0 3.409 2.666.693.693 0 0 1 .281.598.691.691 0 0 1-.1.325.695.695 0 0 1-.241.241 112.682 112.682 0 0 1-17.131 8.128.7.7 0 0 0-.373.973 145.513 145.513 0 0 0 11.204 18.177.697.697 0 0 0 .77.26 181.59 181.59 0 0 0 54.898-27.624.695.695 0 0 0 .286-.503c4.578-47.21-7.665-88.219-32.453-124.572ZM73.6 114.378c-10.815 0-19.727-9.9-19.727-22.059s8.739-22.06 19.727-22.06c11.074 0 19.9 9.987 19.726 22.06 0 12.159-8.739 22.059-19.726 22.059Zm72.935 0c-10.815 0-19.726-9.9-19.726-22.059s8.738-22.06 19.726-22.06c11.075 0 19.9 9.987 19.727 22.06 0 12.159-8.652 22.059-19.727 22.059Z"/>
         </svg>
@@ -130,7 +130,7 @@ const Discord = (props) => {
 
 const Facebook = (props) => {
     return(
-        <a className="jlcc-connect-icon" href="https://google.com">
+        <a className="jlcc-connect-icon" href="https://www.facebook.com/groups/tamujlcc/about">
             <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 195 195">
             <path d="M174.107 0H20.893A20.893 20.893 0 0 0 0 20.893v153.214A20.896 20.896 0 0 0 20.893 195h59.74v-66.296H53.212V97.5h27.421V73.717c0-27.052 16.105-41.995 40.772-41.995 11.813 0 24.166 2.107 24.166 2.107V60.38H131.96c-13.41 0-17.593 8.323-17.593 16.858V97.5h29.937l-4.788 31.204h-25.149V195h59.74a20.896 20.896 0 0 0 14.774-6.119A20.896 20.896 0 0 0 195 174.107V20.893A20.893 20.893 0 0 0 174.107 0Z"/>
             </svg>
@@ -140,7 +140,7 @@ const Facebook = (props) => {
 
 const Instagram = (props) => {
     return(
-        <a className="jlcc-connect-icon" href="https://google.com">
+        <a className="jlcc-connect-icon" href="https://www.instagram.com/tamujlcc/?hl=en">
             <svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 212 211">
             <path d="M106.047 51.693c-29.962 0-54.13 24.107-54.13 53.995 0 29.888 24.168 53.995 54.13 53.995 29.963 0 54.131-24.107 54.131-53.995 0-29.888-24.168-53.995-54.131-53.995Zm0 89.099c-19.362 0-35.192-15.743-35.192-35.104 0-19.361 15.782-35.104 35.192-35.104s35.192 15.743 35.192 35.104c0 19.361-15.829 35.104-35.192 35.104Zm68.971-91.308c0 7.002-5.654 12.594-12.626 12.594-7.02 0-12.626-5.639-12.626-12.594 0-6.955 5.654-12.594 12.626-12.594 6.972 0 12.626 5.639 12.626 12.594Zm35.851 12.782c-.801-16.87-4.664-31.814-17.054-44.127-12.343-12.312-27.324-16.165-44.237-17.011C132.147.14 79.9.14 62.469 1.128c-16.865.799-31.847 4.652-44.237 16.964C5.842 30.405 2.026 45.35 1.178 62.22c-.99 17.388-.99 69.503 0 86.891.8 16.87 4.664 31.814 17.054 44.127 12.39 12.312 27.325 16.165 44.237 17.011 17.431.987 69.678.987 87.109 0 16.913-.799 31.894-4.652 44.237-17.011 12.343-12.313 16.206-27.257 17.054-44.127.99-17.388.99-69.456 0-86.844Zm-22.519 105.5c-3.674 9.211-10.788 16.307-20.069 20.019-13.898 5.499-46.876 4.23-62.234 4.23-15.358 0-48.383 1.222-62.234-4.23-9.233-3.665-16.347-10.761-20.069-20.019-5.512-13.863-4.24-46.758-4.24-62.078s-1.225-48.262 4.24-62.078c3.675-9.21 10.788-16.307 20.07-20.02 13.897-5.498 46.875-4.229 62.233-4.229 15.358 0 48.383-1.222 62.234 4.23 9.234 3.665 16.347 10.761 20.069 20.019 5.512 13.863 4.24 46.758 4.24 62.078s1.272 48.262-4.24 62.078Z"/>
             </svg>
@@ -315,19 +315,34 @@ function JLCC() {
                     </div>
                     <div className="jlcc-event-grid-container">
                         <div className="jlcc-event-grid-item" style={{gridArea:"1 / 1 / span 1 /span 1"}}>
-                            <img src={Halloween}></img>
+                            <div className="jlcc-event-grid-item-shadow">
+                                <div className="jlcc-event-name">Winter Party 2021</div>
+                            </div>
+                            <img src={Winter}></img>
                         </div>
                         <div className="jlcc-event-grid-item" style={{gridArea:"1 / 2 / span 2 / span 2"}}>
+                            <div className="jlcc-event-grid-item-shadow">
+                                <div className="jlcc-event-name">Halloween Party 2021</div>
+                            </div>
                             <img src={Halloween}></img>
                         </div>
                         <div className="jlcc-event-grid-item" style={{gridArea:"2 / 1 / span 2 / span 1"}}>
-                            <img src={Halloween}></img>
+                            <div className="jlcc-event-grid-item-shadow">
+                                <div className="jlcc-event-name">Movie Night</div>
+                            </div>
+                            <img src={Movie}></img>
                         </div>
                         <div className="jlcc-event-grid-item" style={{gridArea:"3 / 2 / span 1 / span 1"}}>
-                            <img src={Halloween}></img>
+                            <div className="jlcc-event-grid-item-shadow">
+                                <div className="jlcc-event-name">Karaoke Party</div>
+                            </div>
+                            <img src={Karaoke}></img>
                         </div>
                         <div className="jlcc-event-grid-item" style={{gridArea:"3 / 3 / span 1 / span 1"}}>
-                            <img src={Halloween}></img>
+                            <div className="jlcc-event-grid-item-shadow">
+                                <div className="jlcc-event-name">Cosplay @ Halloween</div>
+                            </div>
+                            <img src={Cosplay}></img>
                         </div>
                         <div className="jlcc-event-grid-item-last" style={{gridArea:"4 / 1 / span 1 / span 3"}}>
                             More events to come...
@@ -336,7 +351,7 @@ function JLCC() {
                         </div>
                     </div>
                 </div>
-                <div className="jlcc-connect">
+                <div className="jlcc-connect" id="connect">
                     <div className="jlcc-heading">
                         <h1>Connect</h1>
                         <h2>Join our social media</h2>
