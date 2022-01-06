@@ -283,7 +283,7 @@
         overflow: hidden;
     
         width: 98vw;
-        aspect-ratio: 1;
+        height: 98vw;
     }
 
     .jlcc-sakura-left img {
@@ -626,7 +626,7 @@
 
     .jlcc-event-grid-item {
         width: 100%;
-        aspect-ratio: 1;
+        height: 70vw;
     }
 
     .jlcc-event-name {
@@ -641,7 +641,7 @@
     .jlcc-event-grid-item-last {
         width: calc(100% - 1em);
         padding: .5em;
-        aspect-ratio: 1;
+        height: calc(70vw - 1em);
 
         font-size: 9vw;
     }
