@@ -71,22 +71,76 @@
 
     padding-block: 1.5em;
     min-height: 0vw;
-    padding-inline: clamp(1em, 8vw, 100em);
+    /* padding-inline: clamp(1em, 8vw, 100em); */
+    width: clamp(250px, 60vw, 700px);
 }
 
-.jlcc-navbar-tabs > a {
+.jlcc-navbar-tabs a {
     cursor: pointer;
     text-decoration: none;
     color: var(--jlcc-text);
 
     min-height: 0vw;
-    padding-inline: clamp(1em, 3vw, 2em);
 
     transition: all .2s ease-in-out;
 }
 
-.jlcc-navbar-tabs > a:hover {
+.jlcc-navbar-tabs > ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-inline: 25px;
+}
+
+.jlcc-navbar-tabs ul {
+    list-style: none inside none;
+}
+
+.jlcc-navbar-tabs li {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.jlcc-navbar-tabs > ul > li > a {
+    width: fit-content;
+    margin-inline: auto;
+    position: relative;
+}
+
+.jlcc-navbar-tabs > ul > li > a:hover {
     color: var(--jlcc-main);
+}
+
+.jlcc-navbar-tabs > ul > li {
+    position: relative;
+}
+
+.jlcc-navbar-tabs > ul > li > ul {
+    z-index: 5;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    height: 0px;
+    overflow: hidden;
+
+    padding-inline: 10px;
+
+    background-color: var(--jlcc-s1);
+
+    transition: height .5s ease-in-out;
+
+    left: 50%;
+    top: 30px;
+    transform: translateX(-50%);
+}
+
+.jlcc-navbar-tabs > ul > li:hover > ul,
+.jlcc-navbar-tabs > ul > li > ul:hover {
+    height: 200px;
 }
 
 @media screen and (max-width:600px) {
@@ -116,13 +170,34 @@
         transition: height .5s ease-in-out;
     }
 
-    .open {
-        height: 250px;
+    .jlcc-navbar-tabs > ul {
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        padding: 0;
     }
 
-    .jlcc-navbar-tabs > a {
-        width: fit-content;
-        margin-inline: auto;
+    .jlcc-navbar-tabs > ul > li > ul {
+        height: 215px;
+        overflow: hidden;
+    
+        background-color: var(--jlcc-s1);
+
+        padding-inline: 10px;
+    
+        left: 0px;
+        bottom: 0px;
+
+        transform: translateY(-88%) translateX(-35vw);
+    }
+    
+    .jlcc-navbar-tabs > ul > li:hover > ul,
+    .jlcc-navbar-tabs > ul > li > ul:hover {
+        height: 215px;
+    }
+
+    .open {
+        height: 250px;
     }
 
     .jlcc-navbar-menu-container {
@@ -677,7 +752,7 @@
 .jlcc-connect-icon {
     display: block;
 
-    width: clamp(50px, 25vw, 200px);
+    width: clamp(50px, 20vw, 150px);
 }
 
 .jlcc-connect-icon svg:hover{
