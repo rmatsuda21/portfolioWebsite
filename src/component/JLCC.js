@@ -279,7 +279,7 @@ function JLCC() {
                 <div className="jlcc-meetings">
                     <div className="jlcc-heading">
                         <h1>Weekly Meetings</h1>
-                        <h2>5PM @ Rudder Tower 401</h2>
+                        <h2>Date and Time available on Discord</h2>
                     </div>
                     <div className="jlcc-card-container">
                         <div className="jlcc-card">
